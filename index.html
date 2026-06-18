@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🌈 Mad Lib Adventure 🌈</title>
+    <style>
+
+body{
+    font-family: Comic Sans MS, Arial, sans-serif;
+    background: linear-gradient(135deg,#ffd6e8,#d6f5ff);
+    text-align:center;
+    padding:40px;
+    min-height:100vh;
+}
+
+h1{
+    color:#ff4f8b;
+    font-size:50px;
+}
+
+.container{
+    background:white;
+    width:400px;
+    margin:auto;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0px 8px 20px rgba(0,0,0,0.15);
+}
+
+input{
+    width:80%;
+    padding:12px;
+    margin:10px;
+    border-radius:12px;
+    border:2px solid #ffb6d9;
+    font-size:16px;
+}
+
+input:focus{
+    outline:none;
+    border-color:#ff4f8b;
+}
+
+button{
+    padding:12px 20px;
+    margin:10px;
+    border:none;
+    border-radius:15px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
+}
+
+.generate-btn{
+    background:#ff4f8b;
+    color:white;
+}
+
+.generate-btn:hover{
+    transform:scale(1.05);
+}
+
+.reset-btn{
+    background:#87cefa;
+    color:white;
+}
+
+.reset-btn:hover{
+    transform:scale(1.05);
+}
+
+#story{
+    margin-top:25px;
+    font-size:22px;
+    color:#444;
+    font-weight:bold;
+    line-height:1.6;
+}
+.dark{
+    background:#222;
+    color:white;
+}
+
+.dark .container{
+    background:#333;
+    color:white;
+}
+#story{
+
+    margin-top:25px;
+    font-size:22px;
+    font-weight:bold;
+    line-height:1.6;
+
+    animation: pop 0.6s ease;
+}
+
+@keyframes pop{
+
+    0%{
+        transform:scale(0.5);
+        opacity:0;
+    }
+
+    100%{
+        transform:scale(1);
+        opacity:1;
+    }
+
+}
+.dark #story{
+    color:white;
+}
+
+.dark #celebration{
+    color:white;
+}
+
+</style>
+</head>
+
+<body>
+
+
+<h1>🌈 Mad Lib Generator 🌈</h1>
+<p>Stories Created: <span id="count">0</span> 🎉</p>
+
+<div class="container">
+
+    <p>🦄 Enter a Noun</p>
+    <input type="text" id="noun">
+
+    <p>🚀 Enter a Verb</p>
+    <input type="text" id="verb">
+
+    <p>✨ Enter an Adjective</p>
+    <input type="text" id="adjective">
+
+    <br>
+
+    <button class="generate-btn"
+            onclick="generateStory()">
+        Generate Story
+    </button>
+
+    <button class="reset-btn"
+            onclick="resetGame()">
+        Play Again
+    </button>
+<button onclick="toggleDarkMode()">
+🌙 Dark Mode
+</button>
+<button onclick="copyStory()">
+📋 Copy Story
+</button>
+    <p id="story"></p>
+    <p id="celebration"></p>
+</div>
+
+  <script>
+
+let count = 0;
+
+function generateStory() {
+
+   let titles = [
+
+"🌈 Mad Lib Generator 🌈",
+"🚀 Story Machine 🚀",
+"🦄 Chaos Creator 🦄",
+"😂 Laugh Factory 😂",
+"✨ Imagination Engine ✨"
+
+];
+
+document.querySelector("h1").innerHTML =
+titles[Math.floor(Math.random()*titles.length)];   
+    let noun = document.getElementById("noun").value;
+    let verb = document.getElementById("verb").value;
+    let adjective = document.getElementById("adjective").value;
+if(noun === "" || verb === "" || adjective === "") {
+    document.getElementById("story").innerHTML =
+    "🚨 Please fill all fields before creating chaos!";
+    return;
+    }
+
+    let stories = [
+
+        "The " + adjective + " " + noun + " decided to " + verb + " across the city.",
+
+        "One day a " + adjective + " " + noun + " started to " + verb + " inside a mall.",
+
+        "Scientists discovered a " + adjective + " " + noun + " that could " + verb + " faster than light.",
+
+        "The world's first " + adjective + " " + noun + " won an award for " + verb + ".",
+
+        "A giant " + adjective + " " + noun + " suddenly appeared and began to " + verb + ".",
+
+        "Breaking News: A " + adjective + " " + noun + " was caught trying to " + verb + " in public.",
+
+        "The king hired a " + adjective + " " + noun + " whose only job was to " + verb + ".",
+
+        "A mysterious " + adjective + " " + noun + " emerged from space and started to " + verb + ".",
+
+        "In 3025, every " + adjective + " " + noun + " will learn how to " + verb + ".",
+
+        "A superhero " + adjective + " " + noun + " saved the world by learning to " + verb + "."
+
+    ];
+
+
+    let reactions = [
+
+        "😂 That's ridiculous!",
+        "🤯 Nobody saw that coming!",
+        "🦄 Peak creativity detected!",
+        "🚀 This belongs in a movie!",
+        "🐸 The internet approves!"
+
+    ];
+
+    let randomIndex =
+    Math.floor(Math.random() * stories.length);
+
+    let randomReaction =
+    reactions[Math.floor(Math.random() * reactions.length)];
+
+    document.getElementById("story").innerHTML =
+    stories[randomIndex] +
+    "<br><br>" +
+    randomReaction;
+  celebrate();
+changeTheme();
+
+document.getElementById("popSound").play();
+
+    count++;
+    document.getElementById("count").innerHTML = count;
+}
+
+function resetGame() {
+
+    document.getElementById("noun").value = "";
+    document.getElementById("verb").value = "";
+    document.getElementById("adjective").value = "";
+    document.getElementById("story").innerHTML = "";
+}
+
+function toggleDarkMode() {
+    document.body.classList.toggle("dark");
+}
+
+document.addEventListener("keypress", function(event){
+
+    if(event.key === "Enter"){
+        generateStory();
+    }
+
+});
+function copyStory(){
+
+    let text =
+    document.getElementById("story").innerText;
+
+    navigator.clipboard.writeText(text);
+
+    alert("📋 Story copied!");
+}
+function celebrate(){
+
+    let emojis = ["🎉","✨","🌈","🎊","🦄"];
+
+    let randomEmoji =
+    emojis[Math.floor(Math.random()*emojis.length)];
+
+    document.getElementById("celebration").innerHTML =
+    randomEmoji.repeat(10);
+
+}
+function changeTheme(){
+
+    let themes = [
+
+        "linear-gradient(135deg,#ffd6e8,#d6f5ff)",
+
+        "linear-gradient(135deg,#ffe5b4,#ffc0cb)",
+
+        "linear-gradient(135deg,#c8f7c5,#a0e9ff)",
+
+        "linear-gradient(135deg,#f5d0ff,#d6e4ff)",
+
+        "linear-gradient(135deg,#fff4b8,#ffd6d6)"
+
+    ];
+
+    document.body.style.background =
+    themes[Math.floor(Math.random()*themes.length)];
+
+}
+
+</script>
+<audio id="popSound">
+    <source src="https://www.soundjay.com/buttons/sounds/button-09.mp3" type="audio/mpeg">
+</audio>
+</body>
+</html>
