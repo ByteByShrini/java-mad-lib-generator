@@ -1,0 +1,82 @@
+mport java.util.Scanner;
+
+public class MadLib {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("=====================================");
+        System.out.println("       WELCOME TO MAD LIB MANIA      ");
+        System.out.println("=====================================");
+        System.out.println("Let's create a completely ridiculous story!\n");
+
+        System.out.print("What's your name? ");
+        String name = sc.nextLine();
+
+        System.out.print("Enter a celebrity name: ");
+        String celebrity = sc.nextLine();
+
+        System.out.print("Enter an animal: ");
+        String animal = sc.nextLine();
+
+        System.out.print("Enter your favorite food: ");
+        String food = sc.nextLine();
+
+        System.out.print("Enter a random object: ");
+        String object = sc.nextLine();
+
+        System.out.print("Enter a place: ");
+        String place = sc.nextLine();
+
+        System.out.print("Enter an adjective: ");
+        String adjective = sc.nextLine();
+
+        System.out.print("Enter a verb ending in -ing: ");
+        String verb = sc.nextLine();
+
+        System.out.print("Enter a profession: ");
+        String profession = sc.nextLine();
+
+        System.out.print("Enter a body part: ");
+        String bodyPart = sc.nextLine();
+
+        System.out.print("Enter a weird sound: ");
+        String sound = sc.nextLine();
+
+        System.out.print("Enter a number: ");
+        int number = sc.nextInt();
+
+        System.out.println("\nGenerating your story...");
+        System.out.println("\n=====================================");
+        System.out.println("            BREAKING NEWS            ");
+        System.out.println("=====================================\n");
+
+        System.out.println(name + " accidentally released "
+                + number + " " + adjective + " "
+                + animal + "s into " + place + ".");
+
+        System.out.println("Eyewitnesses claim that "
+                + celebrity + " was seen "
+                + verb + " while carrying a giant "
+                + object + " made entirely of "
+                + food + ".");
+
+        System.out.println("The local " + profession
+                + " tried to save the day but injured their "
+                + bodyPart + " and could only scream, \""
+                + sound + "!\"");
+
+        System.out.println("Fortunately, the " + animal
+                + "s calmed down after being offered unlimited "
+                + food + " and free Wi-Fi.");
+
+        System.out.println("Authorities have advised "
+                + name
+                + " to avoid making important decisions before breakfast.");
+
+        System.out.println("\n============== THE END ==============");
+        System.out.println("Thanks for playing, " + name + "!");
+
+        sc.close();
+    }
+}
